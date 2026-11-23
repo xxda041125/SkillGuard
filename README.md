@@ -1,4 +1,4 @@
-# SkillGuard review artifact
+# SkillGuard
 
 This archive accompanies Algorithm 1. It contains the detector implementation, a configuration for the paper's training split, an index of the corpus, and a small executable example. Run the commands below from this directory using Python 3.10.
 
