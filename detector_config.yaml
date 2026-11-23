@@ -1,0 +1,90 @@
+model:
+  type: "detective"
+
+sliding_window:
+  enabled: true
+  stride: 128
+  max_windows: 32
+  aggregation: "max"
+
+data:
+  dataset_root: "corpus"
+  manifest: "../manifest.json"
+  max_token_length: 256
+  batch_size: 8
+  num_workers: 0
+  val_ratio: 0.1
+  test_ratio: 0.1
+  seed: 42
+  eval_splits:
+    - test
+
+encoder:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  hidden_dim: 384
+  freeze_backbone: false
+  decomp_dim: 256
+
+anchors:
+  num_anchors: 8
+  use_soft: true
+
+noise_attention:
+  num_heads: 8
+  top_k_heads: 3
+  top_k_tokens: 5
+
+behavior:
+  enabled: true
+  max_nodes: 16
+  gnn_layers: 2
+  gnn_hidden: 256
+  action_vocab:
+    - read
+    - write
+    - download
+    - upload
+    - execute
+    - fetch
+    - send
+    - install
+    - run
+    - delete
+    - encode
+    - decode
+    - compress
+    - decrypt
+    - request
+    - export
+    - source
+
+scoring:
+  alpha: 0.4
+  beta: 0.4
+  gamma: 0.2
+
+losses:
+  scheme: "two_objective"
+  w_cls: 1.0
+  w_residual: 0.15
+  residual_margin: 1.0
+  clean_target_norm: 0.0
+  residual_clean_weight: 1.0
+  residual_shift_weight: 1.0
+  w_direction: 0.03
+  direction_margin: 0.0
+  classification_roles: "all"
+
+optim:
+  lr: 1.0e-3
+  backbone_lr: 1.0e-5
+  weight_decay: 0.01
+  epochs: 5
+  warmup_ratio: 0.05
+  grad_clip: 1.0
+
+runtime:
+  device: "auto"
+  output_dir: "runs/paper"
+  log_every: 20
+  save_every_epoch: true
