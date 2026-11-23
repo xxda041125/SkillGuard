@@ -45,7 +45,7 @@ With the checkpoint frozen, `fit` encodes the first 32 windows at most per docum
 | Paper component | Implementation |
 | --- | --- |
 | Paired training units | `src/data/dataset.py` |
-| Binary, residual, and direction losses | `src/losses.py`, `experiments/two_objective_loss/run_experiment.py` |
+| Binary, residual, and direction losses | `src/losses.py`, `experiments/training/run_experiment.py` |
 | Semantic representation, attention, and window selection | `src/models/encoder.py`, `anchors.py`, `noise_attention.py`, and `detective.py` in the same directory |
 | Textual operations and graph conditioning | `src/data/behavior_extractor.py`, `src/models/behavior_gnn.py` |
 | Frozen memory, scoring, and audit evidence | `screen.py`, `gate.py` |

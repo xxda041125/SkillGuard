@@ -1,10 +1,4 @@
-"""Train/evaluate the paper-facing compact residual Counterfactual SkillGuard recipe.
-
-The script intentionally lives under experiments/two_objective_loss so the
-training-code migration stays contained. It imports the deployed model/dataset
-modules from CounterfactualSkillGuard/src and uses the official compact
-residual losses from src/losses.py.
-"""
+"""Train and evaluate Counterfactual SkillGuard with the paper's training objective."""
 from __future__ import annotations
 
 import argparse

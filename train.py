@@ -14,7 +14,7 @@ from pathlib import Path
 
 def main() -> None:
     here = Path(__file__).resolve().parent
-    experiment_dir = here / "experiments" / "two_objective_loss"
+    experiment_dir = here / "experiments" / "training"
     if str(experiment_dir) not in sys.path:
         sys.path.insert(0, str(experiment_dir))
 
@@ -24,9 +24,9 @@ def main() -> None:
         pos = sys.argv.index("--config") + 1
         sys.argv[pos] = str(Path(sys.argv[pos]).resolve())
 
-    from run_experiment import main as run_two_objective
+    from run_experiment import main as run_training
 
-    run_two_objective()
+    run_training()
 
 
 if __name__ == "__main__":
